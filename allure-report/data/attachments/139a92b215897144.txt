@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#maincontent > div.page.messages > div:nth-child(2) > div > div"
+}

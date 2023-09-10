@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "body > div.page-wrapper > header > div.header.content > div.minicart-wrapper"
+}
