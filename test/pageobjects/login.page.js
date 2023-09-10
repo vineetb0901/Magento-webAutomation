@@ -1,3 +1,4 @@
+const credentials = require('../../credentials')
 class loginPage {
     get loginButton(){
         return $('body > div.page-wrapper > header > div.panel.wrapper > div > ul > li.authorization-link > a')
