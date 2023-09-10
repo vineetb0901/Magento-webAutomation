@@ -2,10 +2,14 @@ const credentials = require("../../credentials")
 
 class resetPassWord {
     get dropDownButton(){
-        return $('body > div.page-wrapper > header > div.panel.wrapper > div > ul > li.customer-welcome > span > button')
+        return $('//button[@class="action switch"]')
+    }
+    get myAccountButton(){
+        return $('//a[contains(text(),"My Account")]')
     }
     get signOutButton(){
-        return $('body > div.page-wrapper > header > div.panel.wrapper > div > ul > li.customer-welcome.active > div > ul > li.authorization-link')
+
+        return $('//a[contains(text(),"Sign Out")]')
     }
     get signOutConfirmation(){
         return $('#maincontent > div.page-title-wrapper > h1 > span')
@@ -26,7 +30,7 @@ class resetPassWord {
         return $('#maincontent > div.page.messages > div:nth-child(2) > div > div > div')
     }
     get editPasswordButton(){
-        return $('//a[contains(text(),"Change Password")]')
+        return $('#maincontent > div.columns > div.column.main > div.block.block-dashboard-info > div.block-content > div > div.box-actions > a.action.change-password')
     }
     get currentPassword(){
         return $('#current-password')
@@ -37,6 +41,7 @@ class resetPassWord {
     get passwordConfirmation(){
         return $('#password-confirmation')
     }
+
     async editPassword(newPassword){
         await this.editPasswordButton.click()
         await browser.pause(2000)
@@ -44,6 +49,11 @@ class resetPassWord {
         await this.newPasswordField.setValue(newPassword)
         await this.passwordConfirmation.setValue(newPassword)
         await $('//button[@class="action save primary"]').click()
+    }
+    async signOut(){
+        await this.dropDownButton.click()
+        await this.signOutButton.click()
+        return await browser.url('https://magento.softwaretestingboard.com/')
     }
 }
 module.exports = new resetPassWord()

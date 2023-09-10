@@ -3,14 +3,14 @@ const registerPage = require('../pageobjects/register.page')
 const credentials = require('../../credentials')
 const testData = require('../../testData')
 
-describe('Test for existence of register page', ()=>{
-    it.skip('Should test if the user is able to go to register page',async()=>{
-        await browser.url('https://magento.softwaretestingboard.com/')
-        const createAccount = await registerPage.createAccountButton
-        await createAccount.click()
-        expect(await registerPage.getPageTitle).to.equal('Create New Customer Account')
-    })
-})
+// describe('Test for existence of register page', ()=>{
+//     it('Should test if the user is able to go to register page',async()=>{
+//         await browser.url('https://magento.softwaretestingboard.com/')
+//         const createAccount = await registerPage.createAccountButton
+//         await createAccount.click()
+//         expect(await registerPage.getPageTitle).to.equal('Create New Customer Account')
+//     })
+// })
 
 describe('Test User Registration', ()=>{
     beforeEach('Enter the create account page', async()=>{
@@ -66,7 +66,7 @@ describe('Test User Registration', ()=>{
         
     })
     
-    it.only('Should be able to register user with details', async()=>{     
+    it('Should be able to register user with details', async()=>{     
         const firstName = await registerPage.firstName
         const lastName = await registerPage.lastName
         const emailAddress = await registerPage.emailAddress

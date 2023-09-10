@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#maincontent > div.columns > div.column.main > div.block.block-dashboard-info > div.block-content > div > div.box-actions > a.action.change-password"
+}

@@ -13,7 +13,7 @@ class shoppingCart {
         return $('/html/body/div[2]/main/div[3]/div[1]/div[2]/div[2]/ol/li[10]/div/div/div[3]/div/div[1]/form/button')
     }
     get shoppingCartIcon(){
-        return $('body > div.page-wrapper > header > div.header.content > div.minicart-wrapper')
+        return $('//a[@class="action showcart"]')
     }
     get cartCount(){
         return $('.counter-number')

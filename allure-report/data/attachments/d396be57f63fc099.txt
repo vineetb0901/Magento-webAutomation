@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#option-label-size-143-item-168"
-}

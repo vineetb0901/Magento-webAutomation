@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "div[data-product-id=\"78\"] .swatch-option[option-label=\"M\"]"
-}

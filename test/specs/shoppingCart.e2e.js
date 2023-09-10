@@ -3,38 +3,35 @@ const loginPage = require('../pageobjects/login.page')
 const productsPage = require('../pageobjects/products.page')
 const testData = require("../../testData")
 const { expect } = require("chai")
+const resetPasswordPage = require("../pageobjects/resetPassword.page")
 
 describe('shopping Cart', ()=>{
-    before('Do login and proceed',async()=>{
+    beforeEach('Do login and proceed',async()=>{
         await browser.url('https://magento.softwaretestingboard.com/')
         await loginPage.doLogin()
     })
-    it('Should show the coorect searchResults for given query',async()=>{
+
+    it('Should show the correct search Results for given query',async()=>{
         const productName =testData.testProductSample
         await productsPage.searchInput.setValue(productName)
         await browser.keys('Enter')
-        const searchResult = await productsPage.searchResult
-        expect(await searchResult.getText()).to.equal(`Search results for: '${productName}'`)
+        await shoppingCartPage.demoProduct.scrollIntoView()
+        expect(await productsPage.searchResult.getText()).to.equal(`Search results for: '${productName}'`)
     })
 
     it('Should add products to cart', async()=>{
-        const productName =testData.testProductSample
-        await productsPage.searchInput.setValue(productName)
+        await productsPage.searchInput.setValue(testData.testProductSample)
         await browser.keys('Enter') 
         await shoppingCartPage.demoProduct.scrollIntoView()
         await shoppingCartPage.selectSize.click()
         await shoppingCartPage.selectColor.click()
         await shoppingCartPage.addToCartButton.click()
         await shoppingCartPage.shoppingCartIcon.click()
-        await browser.pause(6000)
+        expect(await $('//a[contains(text(),"Chaz Kangeroo Hoodie")]').getText()).to.equal(await shoppingCartPage.demoProduct.getText())
     })
 
-    it('Should check for the correct quantity', async()=>{
-        await browser.pause(1000)
-        console.log(await shoppingCartPage.cartCount.getText())
-    })
 
-    it.only('Should be able to view and delete the cart', async()=>{
+    it('Should be able to view and edit quantity of the cart', async()=>{
         await browser.pause(2000)
         await shoppingCartPage.shoppingCartIcon.click()
         await shoppingCartPage.viewAndDeleteCart.click()
@@ -50,5 +47,9 @@ describe('shopping Cart', ()=>{
         await shoppingCartPage.proceedToCheckout.click()
         expect(await browser.getTitle()).to.equal('Checkout')
         
+    })
+    afterEach('do signout after each test',async()=>{
+        await $('//button[@class="action switch"]').click()
+        await resetPasswordPage.signOutButton.click()
     })
 })

@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//*[@id=\"maincontent\"]/div[2]/div[2]/div/div/div/text()[1]"
-}

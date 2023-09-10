@@ -6,7 +6,7 @@ describe('Product search and View products',()=>{
     before('Open the site Url and proceed',async()=>{
         await browser.url('https://magento.softwaretestingboard.com/')
     })
-    
+
     it('Should search for product and display the list without login', async ()=>{
         const productName ='hoodie'
         await productsPage.searchInput.setValue(productName)
@@ -23,7 +23,7 @@ describe('Product search and View products',()=>{
         await browser.keys('Enter')
         const searchResult = await productsPage.searchResult
         console.log(await searchResult.getText());
-        expect(await searchResult.getText()).to.equal(`Search results for: '${productName}'`)
+        expect(await productsPage.searchResult.getText()).to.equal(`Search results for: '${productName}'`)
 
     })
 })

@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#swatch-opt-62 > #swatch-option text > #option-label-size-143-item-168"
-}

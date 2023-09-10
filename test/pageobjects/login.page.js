@@ -12,6 +12,9 @@ class loginPage {
     get submitButton(){
         return $('#send2')
     }
+    get loginConfirmation(){
+        return $('.logged-in')
+    }
     async doLogin(){
         await this.loginButton.click()
         await this.emailField.setValue(credentials.email)
