@@ -15,6 +15,9 @@ class loginPage {
     get loginConfirmation(){
         return $('.logged-in')
     }
+    get loginFailedMessage(){
+        return $('//div[@role = "alert"]/div/div')
+    }
     async doLogin(){
         await this.loginButton.click()
         await this.emailField.setValue(credentials.email)
