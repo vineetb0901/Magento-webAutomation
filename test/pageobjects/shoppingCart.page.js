@@ -22,12 +22,16 @@ class shoppingCart {
     get viewAndDeleteCart(){
         return $('//a[@class="action viewcart"]')
     }
+    get quantityField(){
+        return $('//input[@class="input-text qty"]')
+    }
     async updateQuantityField(quantity){
-        await $('//input[@class="input-text qty"]').setValue(quantity)
-        await browser.keys('Enter')
+        await this.quantityField.setValue(quantity)
+        return await browser.keys('Enter')
     }
     get proceedToCheckout(){
-        return $('//button[@class="action primary checkout"]')
+        // return $('#maincontent > div.columns > div > div.cart-container > div.cart-summary > ul > li:nth-child(1) > button')
+        return $('//button[@data-role="proceed-to-checkout"]')
     }
 
 }

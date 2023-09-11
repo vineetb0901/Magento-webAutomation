@@ -19,9 +19,8 @@ describe('Reset password', ()=>{
     })
 
 
-    it('Should modify the password', async()=>{
-        await loginPage.doLogin()
-        // await browser.url('https://magento.softwaretestingboard.com/customer/account/')     
+    it.only('Should modify the password', async()=>{
+        await loginPage.doLogin()   
         await resetPage.dropDownButton.click()
         await resetPage.myAccountButton.click()
         await browser.pause(1000)

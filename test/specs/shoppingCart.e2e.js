@@ -6,7 +6,7 @@ const { expect } = require("chai")
 const resetPasswordPage = require("../pageobjects/resetPassword.page")
 
 describe('shopping Cart', ()=>{
-    beforeEach('Do login and proceed',async()=>{
+    before('Do login and proceed',async()=>{
         await browser.url('https://magento.softwaretestingboard.com/')
         await loginPage.doLogin()
     })
@@ -20,36 +20,38 @@ describe('shopping Cart', ()=>{
     })
 
     it('Should add products to cart', async()=>{
-        await productsPage.searchInput.setValue(testData.testProductSample)
-        await browser.keys('Enter') 
         await shoppingCartPage.demoProduct.scrollIntoView()
         await shoppingCartPage.selectSize.click()
         await shoppingCartPage.selectColor.click()
         await shoppingCartPage.addToCartButton.click()
+        await browser.pause(2000)
+        await shoppingCartPage.shoppingCartIcon.scrollIntoView()
         await shoppingCartPage.shoppingCartIcon.click()
         expect(await $('//a[contains(text(),"Chaz Kangeroo Hoodie")]').getText()).to.equal(await shoppingCartPage.demoProduct.getText())
     })
 
 
     it('Should be able to view and edit quantity of the cart', async()=>{
-        await browser.pause(2000)
-        await shoppingCartPage.shoppingCartIcon.click()
         await shoppingCartPage.viewAndDeleteCart.click()
         await shoppingCartPage.updateQuantityField(3)
-        await browser.pause(5000)
+        await browser.pause(6000)
+        await shoppingCartPage.shoppingCartIcon.click()
         expect(await shoppingCartPage.cartCount.getText()).to.equal('3')
-        
     })
 
     it('Should be able to proceed to checkout page', async()=>{
-        await browser.pause(2000)
-        await shoppingCartPage.shoppingCartIcon.click()
+        await browser.pause(3000)
         await shoppingCartPage.proceedToCheckout.click()
-        expect(await browser.getTitle()).to.equal('Checkout')
-        
+        expect(await browser.getTitle()).to.equal('Checkout')  
     })
-    afterEach('do signout after each test',async()=>{
-        await $('//button[@class="action switch"]').click()
-        await resetPasswordPage.signOutButton.click()
+    it('Should be able to fill ship details and place order',async()=>{
+        await $('#shipping-method-buttons-container > div > button').click()
+        await $('#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button').waitForDisplayed()
+        await $('#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button').click()
+        await $('#maincontent > div.page-title-wrapper > h1 > span').waitForDisplayed()
+        const confirmMessage = await $('#maincontent > div.page-title-wrapper > h1 > span')
+        await browser.pause(3000)
+        expect(await confirmMessage.getText()).to.equal('Thank you for your purchase!')
     })
+
 })
