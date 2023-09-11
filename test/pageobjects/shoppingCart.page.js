@@ -25,6 +25,15 @@ class shoppingCart {
     get quantityField(){
         return $('//input[@class="input-text qty"]')
     }
+    get nextButton(){
+        return $('#shipping-method-buttons-container > div > button')
+    }
+    get placeOrderButton(){
+        return $('#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button')
+    }
+    get orderConfirmation(){
+        return $('#maincontent > div.page-title-wrapper > h1 > span')
+    }
     async updateQuantityField(quantity){
         await this.quantityField.setValue(quantity)
         return await browser.keys('Enter')

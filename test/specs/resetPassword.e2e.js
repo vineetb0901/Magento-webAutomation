@@ -19,7 +19,7 @@ describe('Reset password', ()=>{
     })
 
 
-    it.only('Should modify the password', async()=>{
+    it('Should modify the password', async()=>{
         await loginPage.doLogin()   
         await resetPage.dropDownButton.click()
         await resetPage.myAccountButton.click()

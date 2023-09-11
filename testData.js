@@ -1,5 +1,5 @@
 class testData {
-    email ='kemicy@hexi.pics'
+    email ='huxyne@tutuapp.bid'
     firstName = 'Vineet'
     lastName = 'Bhat'
     password = 'vineet@1234'

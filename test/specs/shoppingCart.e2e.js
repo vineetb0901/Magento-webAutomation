@@ -3,9 +3,8 @@ const loginPage = require('../pageobjects/login.page')
 const productsPage = require('../pageobjects/products.page')
 const testData = require("../../testData")
 const { expect } = require("chai")
-const resetPasswordPage = require("../pageobjects/resetPassword.page")
 
-describe('shopping Cart', ()=>{
+describe('Shopping Cart', ()=>{
     before('Do login and proceed',async()=>{
         await browser.url('https://magento.softwaretestingboard.com/')
         await loginPage.doLogin()
@@ -42,14 +41,15 @@ describe('shopping Cart', ()=>{
     it('Should be able to proceed to checkout page', async()=>{
         await browser.pause(3000)
         await shoppingCartPage.proceedToCheckout.click()
-        expect(await browser.getTitle()).to.equal('Checkout')  
+        expect(await browser.getTitle()).to.equal('Checkout','title doesnt match')
     })
     it('Should be able to fill ship details and place order',async()=>{
-        await $('#shipping-method-buttons-container > div > button').click()
-        await $('#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button').waitForDisplayed()
-        await $('#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button').click()
-        await $('#maincontent > div.page-title-wrapper > h1 > span').waitForDisplayed()
-        const confirmMessage = await $('#maincontent > div.page-title-wrapper > h1 > span')
+        await browser.pause(1000)
+        await shoppingCartPage.nextButton.click()
+        await shoppingCartPage.placeOrderButton.waitForDisplayed()
+        await shoppingCartPage.placeOrderButton.click()
+        await shoppingCartPage.orderConfirmation.waitForDisplayed()
+        const confirmMessage = await shoppingCartPage.orderConfirmation
         await browser.pause(3000)
         expect(await confirmMessage.getText()).to.equal('Thank you for your purchase!')
     })

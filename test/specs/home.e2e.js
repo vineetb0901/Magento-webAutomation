@@ -8,7 +8,7 @@ describe('Home page existance',()=>{
     it('verify for homepage title', async ()=>{
      
         const title= await homepage.getPageTitle()
-        expect(title).to.equal('Home Page')
+        expect(title).to.equal('Home Page','title doesn`t match')
     })
     it('Should test if the user is able to go to register page',async()=>{
         const createAccount = await registerPage.createAccountButton
