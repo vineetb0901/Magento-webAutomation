@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//a/span[contains(text(),\"View and Edit Cart\")]"
-}
