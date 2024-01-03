@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#shipping-method-buttons-container > div > button"
-}

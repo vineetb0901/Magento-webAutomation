@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#maincontent > div.page-title-wrapper > h1 > span"
-}

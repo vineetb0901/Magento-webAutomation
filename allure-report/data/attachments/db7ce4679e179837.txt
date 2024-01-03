@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#checkout-payment-method-load > div > div > div.payment-method._active > div.payment-method-content > div.actions-toolbar > div > button"
-}

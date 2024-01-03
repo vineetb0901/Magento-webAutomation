@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#login-form > fieldset > div.actions-toolbar > div.secondary > a > span"
-}

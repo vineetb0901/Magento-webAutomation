@@ -1,4 +1,0 @@
-{
-  "using": "css selector",
-  "value": "#maincontent > div.columns > div > div.cart-container > div.cart-summary > ul > li:nth-child(1) > button"
-}

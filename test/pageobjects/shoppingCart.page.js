@@ -13,6 +13,7 @@ class shoppingCart {
         return $('/html/body/div[2]/main/div[3]/div[1]/div[2]/div[2]/ol/li[10]/div/div/div[3]/div/div[1]/form/button')
     }
     get shoppingCartIcon(){
+        browser.pause(2000)
         return $('//a[@class="action showcart"]')
     }
     get cartCount(){
@@ -20,7 +21,8 @@ class shoppingCart {
         
     }
     get viewAndDeleteCart(){
-        return $('//a[@class="action viewcart"]')
+        // return $('//a[@class="action viewcart"]')
+        return $('//a/span[contains(text(),"View and Edit Cart")]')
     }
     get quantityField(){
         return $('//input[@class="input-text qty"]')
